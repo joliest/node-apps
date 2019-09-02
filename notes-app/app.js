@@ -1,16 +1,3 @@
-/* 4.)
-    Challenge
-        1. Install version 2.4.1 of chalk
-        2. Load chalk into app.js
-        3. Use it to print the string "Success!"
-            to the console in green
-        4. Test your work
-*/
-const notes = require('./notes.js');
-const chalk = require('chalk')
-console.log(notes.getNotes())
-console.log(chalk.bgGreen('Success!'))
-
 /* 1.)
     Challenge:
         1. Create a new file called notes.js
@@ -43,3 +30,16 @@ console.log('isURL ::: ', validator.isURL('joli.com'))
 console.log('isEmail ::: ', validator.isEmail('jolisa.com'))
 
 */
+
+/* 4.)
+    Challenge
+        1. Install version 2.4.1 of chalk
+        2. Load chalk into app.js
+        3. Use it to print the string "Success!"
+            to the console in green
+        4. Test your work
+*/
+const notes = require('./notes.js');
+const chalk = require('chalk')
+console.log(notes.getNotes())
+console.log(chalk.green.bold('Success!'))
