@@ -29,7 +29,7 @@ yargs.command({
         console.log('Title . . . ' + argv.title);
         console.log('Body . . . ' + argv.body);
     }
-}).parse()
+})
 
 yargs.command({
     command: 'remove',
@@ -38,7 +38,9 @@ yargs.command({
         // executes this code when remove is called
         console.log("Removing a note . .. ");
     }
-}).parse()
+})
+
+yargs.parse()
 
 
 // yargs has its own argv
