@@ -1,10 +1,5 @@
-
-
-/*6 
-    Using YARGS - to be able to parse a key/value pair argument from command line
-
-*/
 const yargs = require('yargs');
+const notes = require('./notes.js');
 
 // setting up a command. Can be viewed via --help
 yargs.command({
@@ -25,18 +20,22 @@ yargs.command({
         }
     },
     handler: function(argv) {
-        // executes this code when add is called
-        console.log('Title . . . ' + argv.title);
-        console.log('Body . . . ' + argv.body);
+        notes.addNote(argv.title, argv.body)
     }
 })
 
 yargs.command({
     command: 'remove',
     describe: 'Removes a note',
-    handler: function() {
-        // executes this code when remove is called
-        console.log("Removing a note . .. ");
+    builder: {
+        title: {
+            describe: 'Note title to remove',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function(argv) {
+        notes.removeNote(argv.title)
     }
 })
 
