@@ -1,10 +1,13 @@
+const path = require('path');
 const express = require('express'); // returns a function
 
-const app = express();
 
-app.get('', (req, res) => {
-    res.send('Hello world!');
-});
+
+const app = express();
+const PUBLIC_FOLDER = path.join(__dirname, '../public');
+
+// runs html file
+app.use(express.static(PUBLIC_FOLDER));
 
 // start server up, single time
 app.listen(3000, () => {
