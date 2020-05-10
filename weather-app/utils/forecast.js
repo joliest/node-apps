@@ -5,6 +5,8 @@ const forecast = (lat, long, callback) => {
     request({url, json: true}, (error, response) => {
         if (error) {
             callback('Unable to connect');
+        } else if (response.body.error) {
+            callback('There\'s a problem with coordinates');
         } else {   
             callback(null, {
                 current: response.body.current.weather_descriptions
