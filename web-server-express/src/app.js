@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express'); // returns a function
 const hbs = require('hbs');
 
-
 const app = express();
 const PUBLIC_FOLDER = path.join(__dirname, '../public'); // returns path/src
 const viewsPath = path.join(__dirname, './template/views');
