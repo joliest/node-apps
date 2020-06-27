@@ -70,14 +70,13 @@ app.get('/weather', (req, res) => {
         })
     }
     
-    geocode(req.query.address, (error, geocode) => {
+    geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
         if (error) {
             return res.send({
                 error
             })
         } 
-        const {latitude, longitude, location} = geocode;
-        forecast(latitude, longitude, (error, {current}) => {
+        forecast(latitude, longitude, (error, {current = ''}) => {
             if (error) {
                 return res.send({
                     error
