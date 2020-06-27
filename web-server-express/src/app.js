@@ -1,6 +1,8 @@
 const path = require('path');
 const express = require('express'); // returns a function
 const hbs = require('hbs');
+const geocode = require('./utils/geocode.js');
+const forecast = require('./utils/forecast.js')
 
 const app = express();
 const PUBLIC_FOLDER = path.join(__dirname, '../public'); // returns path/src
@@ -68,11 +70,27 @@ app.get('/weather', (req, res) => {
         })
     }
     
-    res.send({
-        forecast: 'Its snowing',
-        location: 'Apalit',
-        address: req.query.address
-    })
+    geocode(req.query.address, (error, geocode) => {
+        if (error) {
+            return res.send({
+                error
+            })
+        } 
+        const {latitude, longitude, location} = geocode;
+        forecast(latitude, longitude, (error, {current}) => {
+            if (error) {
+                return res.send({
+                    error
+                })
+            }
+              
+            res.send({
+                forecast: current,
+                location: location,
+                address: req.query.address
+            })
+        })
+    });
 })
 
 // handling 404
