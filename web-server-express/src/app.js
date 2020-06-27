@@ -2,9 +2,11 @@ const path = require('path');
 const express = require('express'); // returns a function
 
 
-
 const app = express();
-const PUBLIC_FOLDER = path.join(__dirname, '../public');
+const PUBLIC_FOLDER = path.join(__dirname, '../public'); // returns path/src
+
+
+app.set('view engine', 'hbs')
 
 // runs html file
 app.use(express.static(PUBLIC_FOLDER));
