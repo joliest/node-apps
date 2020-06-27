@@ -18,6 +18,14 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get('/about', (req, res) => {
+    res.render('about', {
+        // value you want the view to access
+        title: 'About',
+        name: 'Joli Estampador'
+    })
+})
+
 // start server up, single time
 app.listen(3000, () => {
     console.log('Server is up on port 3000');
