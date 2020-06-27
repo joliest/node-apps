@@ -33,6 +33,31 @@ app.get('/about', (req, res) => {
     })
 })
 
+app.get('/help', (req, res) => {
+    res.render('help', {
+        // value you want the view to access
+        title: 'Help',
+        name: 'Joli Estampador'
+    })
+})
+
+app.get('/help/*', (req, res) => {
+    res.render('_404', {
+        title: 'Help',
+        name: 'Joli Estampador',
+        error: 'Unable to find article'
+    })
+})
+
+// handling 404
+app.get('*', (req, res) => {
+    res.render('_404', {
+        title: 'Error',
+        name: 'Joli Estampador',
+        error: 'Page not found'
+    })
+});
+
 // start server up, single time
 app.listen(3000, () => {
     console.log('Server is up on port 3000');
