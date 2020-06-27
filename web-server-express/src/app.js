@@ -11,7 +11,11 @@ app.use(express.static(PUBLIC_FOLDER));
 
 app.set('view engine', 'hbs')
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {
+        // value you want the view to access
+        title: 'Weather App',
+        name: 'Joli Estampador'
+    })
 })
 
 // start server up, single time
